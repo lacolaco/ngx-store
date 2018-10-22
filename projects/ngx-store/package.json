@@ -1,0 +1,11 @@
+{
+  "name": "@lacolaco/ngx-store",
+  "description": "@lacolaco/store for Angular",
+  "version": "4.1.0",
+  "repository": "https://github.com/lacolaco/ngx.git",
+  "peerDependencies": {
+    "@angular/common": ">=6.0.0",
+    "@angular/core": ">=6.0.0",
+    "@lacolaco/reactive-store": "^2.0.0"
+  }
+}

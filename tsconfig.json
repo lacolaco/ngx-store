@@ -16,6 +16,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-store": [
+        "dist/ngx-store"
+      ],
+      "ngx-store/*": [
+        "dist/ngx-store/*"
+      ]
+    }
   }
 }
