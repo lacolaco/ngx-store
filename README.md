@@ -6,6 +6,10 @@ https://yarn.pm/@lacolaco/ngx-store
 
 [![@lacolaco/ngx-store Dev Token](https://badge.devtoken.rocks/@lacolaco/ngx-store)](https://devtoken.rocks/package/@lacolaco/ngx-store)
 
+[![CircleCI](https://circleci.com/gh/lacolaco/ngx-store.svg?style=svg)](https://circleci.com/gh/lacolaco/ngx-store)
+
+[![npm version](https://badge.fury.io/js/%40lacolaco%2Fngx-store.svg)](https://badge.fury.io/js/%40lacolaco%2Fngx-store)
+
 ## Install
 
 ```
