@@ -19,11 +19,8 @@
       "dom"
     ],
     "paths": {
-      "ngx-store": [
-        "dist/ngx-store"
-      ],
-      "ngx-store/*": [
-        "dist/ngx-store/*"
+      "@lacolaco/ngx-store": [
+        "projects/ngx-store/src/public_api"
       ]
     }
   }
