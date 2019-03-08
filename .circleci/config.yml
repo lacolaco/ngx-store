@@ -64,13 +64,13 @@ workflows:
     jobs:
       - build
       - test:
-          require:
+          requires:
             - build
       - lint:
-          require:
+          requires:
             - build
       - publish:
-          require:
+          requires:
             - test
             - lint
           filters:
