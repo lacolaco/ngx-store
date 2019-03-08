@@ -9,7 +9,7 @@
     "test:ci": "ng test --no-watch",
     "lint": "ng lint && yarn format --check",
     "e2e": "ng e2e",
-    "format": "prettier --write './projects/**/*.ts' --single-quote"
+    "format": "prettier --write './projects/**/*.ts'"
   },
   "private": true,
   "dependencies": {

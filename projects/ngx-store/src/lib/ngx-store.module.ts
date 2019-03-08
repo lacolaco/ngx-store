@@ -12,9 +12,7 @@ export const INITIAL_STATE_TOKEN = new InjectionToken<string>('INITIAL_STATE');
  * ],
  * ```
  */
-export const STORE_MIDDLEWARE = new InjectionToken<Middleware[]>(
-  'STORE_MIDDLEWARE'
-);
+export const STORE_MIDDLEWARE = new InjectionToken<Middleware[]>('STORE_MIDDLEWARE');
 
 export function storeFactory<T>(initialState: T, injector: Injector): Store<T> {
   const middlewares = injector.get(STORE_MIDDLEWARE, []);
@@ -31,9 +29,9 @@ export class ReactiveStoreModule {
         {
           provide: Store,
           useFactory: storeFactory,
-          deps: [INITIAL_STATE_TOKEN, Injector]
-        }
-      ]
+          deps: [INITIAL_STATE_TOKEN, Injector],
+        },
+      ],
     };
   }
 }

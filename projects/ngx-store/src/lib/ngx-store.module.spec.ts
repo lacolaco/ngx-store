@@ -12,17 +12,14 @@ describe('StoreModule', () => {
   describe('forRoot', () => {
     beforeEach(async(() => {
       TestBed.configureTestingModule({
-        imports: [ReactiveStoreModule.forRoot({ count: 1 })]
+        imports: [ReactiveStoreModule.forRoot({ count: 1 })],
       });
     }));
 
-    it('should provide the root store', inject(
-      [Store],
-      (store: Store<TestState>) => {
-        expect(store).toBeDefined();
-        expect(store.getValue().count).toEqual(1);
-      }
-    ));
+    it('should provide the root store', inject([Store], (store: Store<TestState>) => {
+      expect(store).toBeDefined();
+      expect(store.getValue().count).toEqual(1);
+    }));
   });
 
   describe('Middleware', () => {
@@ -32,7 +29,7 @@ describe('StoreModule', () => {
         providers: [
           {
             provide: 'foo',
-            useValue: 'foo'
+            useValue: 'foo',
           },
           {
             provide: STORE_MIDDLEWARE,
@@ -40,20 +37,17 @@ describe('StoreModule', () => {
               return next => s => next(foo);
             },
             deps: ['foo'],
-            multi: true
-          }
-        ]
+            multi: true,
+          },
+        ],
       });
     }));
 
-    it('should handle injected middleware', inject(
-      [Store],
-      (store: Store<TestState>) => {
-        expect(store).toBeDefined();
-        // trigger middleware
-        store.patch(state => ({ ...state }));
-        expect(store.getValue() as any).toEqual('foo');
-      }
-    ));
+    it('should handle injected middleware', inject([Store], (store: Store<TestState>) => {
+      expect(store).toBeDefined();
+      // trigger middleware
+      store.patch(state => ({ ...state }));
+      expect(store.getValue() as any).toEqual('foo');
+    }));
   });
 });
