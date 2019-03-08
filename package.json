@@ -9,7 +9,8 @@
     "test:ci": "yarn test --no-watch",
     "lint": "ng lint --project ngx-store && yarn format --check",
     "e2e": "ng e2e",
-    "format": "prettier --write './projects/**/*.ts'"
+    "format": "prettier --write './projects/**/*.ts'",
+    "prepublish": "cp {README.md,CHANGELOG.md,LICENSE} dist/ngx-store"
   },
   "private": true,
   "dependencies": {
