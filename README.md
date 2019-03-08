@@ -1,27 +1,69 @@
-# ngx-store
+# @lacolaco/ngx-store
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.0.
+Angular module for [@lacolaco/reactive-store](https://github.com/lacolaco/reactive-store)
 
-## Development server
+https://yarn.pm/@lacolaco/ngx-store
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+[![@lacolaco/ngx-store Dev Token](https://badge.devtoken.rocks/@lacolaco/ngx-store)](https://devtoken.rocks/package/@lacolaco/ngx-store)
 
-## Code scaffolding
+## Install
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+$ npm i @lacolaco/ngx-store
+```
 
-## Build
+## How to Use
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Add to AppModule
 
-## Running unit tests
+```ts
+import { ReactiveStoreModule, STORE_MIDDLEWARE } from '@lacolaco/ngx-store';
+import { Middleware } from '@lacolaco/reactive-store';
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+export function loggingMiddleware(next: Middleware) {
+  return state => {
+    state = next(state);
+    console.log(`[State Update]`, state);
+    return state;
+  };
+}
 
-## Running end-to-end tests
+@NgModule({
+  imports: [
+    BrowserModule,
+    ReactiveStoreModule.forRoot(
+      { count: 0 },
+    ),
+  ],
+  providers: [
+    { provide: STORE_MIDDLEWARE, useValue: loggingMiddleware, multi: true },
+  ],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Inject `Store` at a component
 
-## Further help
+```ts
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@lacolaco/reactive-store';
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+@Component({
+  selector: 'app-root',
+  template: '{{count$ | async}}',
+})
+export class AppComponent implements OnInit {
+  count$ = this.store.select(state => state.count);
+  constructor(private store: Store<any>) {}
+
+  ngOnInit() {
+    setInterval(() => {
+      this.store.patch(state => ({ count: state.count + 1 }));
+    }, 1000);
+  }
+}
+```
+
+Learn more about `Store` API: [@lacolaco/reactive-store](https://github.com/lacolaco/reactive-store)
