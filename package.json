@@ -5,12 +5,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "postbuild": "cp README.md CHANGELOG.md LICENSE dist/ngx-store",
     "test": "ng test --project ngx-store",
     "test:ci": "yarn test --no-watch",
     "lint": "ng lint --project ngx-store && yarn format --check",
     "e2e": "ng e2e",
     "format": "prettier --write './projects/**/*.ts'",
-    "prepublish": "cp {README.md,CHANGELOG.md,LICENSE} dist/ngx-store",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "private": true,
