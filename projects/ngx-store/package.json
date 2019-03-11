@@ -1,10 +1,10 @@
 {
   "name": "@lacolaco/ngx-store",
-  "description": "@lacolaco/store for Angular",
-  "version": "4.1.0",
+  "description": "Minimal state management for Angular",
+  "version": "5.0.0",
   "repository": "https://github.com/lacolaco/ngx-store",
   "peerDependencies": {
     "@angular/core": ">=6.0.0",
-    "@lacolaco/reactive-store": "^2.0.0"
+    "rxjs": ">=6.0.0"
   }
 }

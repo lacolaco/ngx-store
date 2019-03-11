@@ -1,3 +1,26 @@
+# 5.0.0 (2019-03-11)
+
+
+### Bug Fixes
+
+* UMD module id for reactive-store ([bfd4a80](https://github.com/lacolaco/ngx-store/commit/bfd4a80))
+
+
+### Features
+
+* implement new Store APIs ([3777f60](https://github.com/lacolaco/ngx-store/commit/3777f60))
+
+
+### BREAKING CHANGES
+
+* Since v5, all APIs are changed.
+
+- Remove ReactiveStoreModule and StoreModule
+- No longer provide the root global Store
+- No longer depend on @lacolaco/reactive-store
+
+
+
 <a name="4.1.0"></a>
 # 4.1.0 (2018-05-02)
 
