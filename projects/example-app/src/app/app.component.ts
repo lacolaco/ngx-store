@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
-import { Store } from '@lacolaco/reactive-store';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CounterStore, actions } from './state/counter-store';
+
+const incrementOne = actions.increment(1);
 
 @Component({
   selector: 'app-root',
@@ -8,16 +10,16 @@ import { Observable } from 'rxjs';
     <p>Counter: {{ count$ | async }}</p>
   `,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   count$: Observable<number>;
 
-  constructor(private store: Store<{ count: number }>) {
-    this.count$ = this.store.select(state => state.count);
+  constructor(private counterStore: CounterStore) {
+    this.count$ = this.counterStore.selectValue(state => state.count);
   }
 
   ngOnInit() {
     setInterval(() => {
-      this.store.patch(state => ({ count: (state.count || 0) + 1 }));
+      this.counterStore.updateValue(incrementOne);
     }, 1000);
   }
 }
