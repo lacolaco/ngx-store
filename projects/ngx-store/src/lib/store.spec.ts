@@ -62,18 +62,22 @@ describe('Store', () => {
     store.updateValue(state => ({ count: state.count + 1 }));
     const change = store.lastUpdateChange;
     expect(change).toBeDefined();
-    expect(change.previousValue.count).toBe(1);
-    expect(change.currentValue.count).toBe(2);
-    expect(change.actionName).toBe('');
+    if (change) {
+      expect(change.previousValue.count).toBe(1);
+      expect(change.currentValue.count).toBe(2);
+      expect(change.actionName).toBe('');
+    }
   });
 
   it('should be able to get updated change in onChange hook (named action)', () => {
-    const increment = state => ({ count: state.count + 1 });
+    const increment = (state: TestState) => ({ count: state.count + 1 });
     store.updateValue(increment);
     const change = store.lastUpdateChange;
     expect(change).toBeDefined();
-    expect(change.previousValue.count).toBe(1);
-    expect(change.currentValue.count).toBe(2);
-    expect(change.actionName).toBe('increment');
+    if (change) {
+      expect(change.previousValue.count).toBe(1);
+      expect(change.currentValue.count).toBe(2);
+      expect(change.actionName).toBe('increment');
+    }
   });
 });
