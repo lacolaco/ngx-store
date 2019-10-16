@@ -1,3 +1,5 @@
+# No Longer Maintained. Use [@lacolaco/reactive-store](https://github.com/lacolaco/reactive-store) Instead.
+
 # @lacolaco/ngx-store
 
 Minimal state management library for Angular based on RxJS.
